@@ -1,0 +1,50 @@
+{
+  "manifest_version": 2,
+  "name": "Travis' Utility Belt",
+  "short_name": "Travis' Utility Belt",
+  "description": "Quality of Life: Reddit Unsave All, Duplicate Downloads, etc.",
+  "version": "0.1.0",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "24": "icon48.png",
+      "32": "icon128.png"
+    },
+    "default_title": "Travis' Utility Belt",
+    "default_popup": "popup.html"
+  },
+
+  "options_page": "options.html",
+
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "background.bundle.js"
+    ]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.reddit.com/user/*"],
+      "js": [
+        "content.bundle.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "contextMenus",
+    "downloads",
+    "notifications",
+    "storage",
+    "<all_urls>"
+  ]
+}

@@ -1,0 +1,15 @@
+/* @import '../../../node_modules/bootstrap/dist/css/bootstrap.css'; */
+
+body {
+  min-width: 300px;
+}
+
+.outside {
+  background: #5ba7ff;
+  margin: 0.1em;
+}
+
+.title {
+  font-size: 2.0em;
+  color: white;
+}

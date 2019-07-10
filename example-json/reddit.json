@@ -1,0 +1,45 @@
+{
+  "features": {
+    "richtext_previews": true,
+    "do_not_track": true,
+    "chat_user_settings": true,
+    "chat_subreddit": true,
+    "show_amp_link": true,
+    "mweb_xpromo_revamp_v2": {
+      "owner": "growth",
+      "variant": "treatment_3",
+      "experiment_id": 457
+    },
+    "chat_reddar_reports": true,
+    "mweb_xpromo_interstitial_comments_ios": true,
+    "mweb_footer_upsell": {
+      "owner": "growth",
+      "variant": "light_2",
+      "experiment_id": 497
+    },
+    "mweb_xpromo_modal_listing_click_daily_dismissible_ios": true,
+    "no_subscription_step": {
+      "owner": "growth",
+      "variant": "control_1",
+      "experiment_id": 303
+    },
+    "mweb_xpromo_interstitial_comments_android": true,
+    "chat_group_rollout": true,
+    "custom_feeds": true,
+    "spez_modal": true,
+    "mweb_xpromo_modal_listing_click_daily_dismissible_android": true,
+    "community_awards": true,
+    "swap_steps_two_and_three_recalibration": {
+      "owner": "growth",
+      "variant": "treatment_1",
+      "experiment_id": 324
+    },
+    "mweb_xpromo_revamp_v3": {
+      "owner": "growth",
+      "variant": "treatment_1",
+      "experiment_id": 480
+    },
+    "dual_write_user_prefs": true,
+    "is_email_permission_required": false
+  }
+}
