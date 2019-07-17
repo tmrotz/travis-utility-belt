@@ -51,7 +51,6 @@ export default async function handleOnCreated(dl_item) {
         iconUrl: Icon128,
         title: 'File already exists',
         message: 'It seems like the file ' + dl_item.filename + ' already exists',
-        contextMessage: 'Click to show the file',
         buttons: [
           {title: 'Download Anyway', iconUrl: SuccessImg},
           {title: 'Cancel Download', iconUrl: ErrorImg}
