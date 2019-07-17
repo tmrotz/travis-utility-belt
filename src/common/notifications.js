@@ -2,22 +2,25 @@ import SuccessImg from '../assets/success.png';
 import NoticeImg from '../assets/notice.png';
 import ErrorImg from '../assets/error.png';
 
-export function notifyNotice(body, time) {
-  notify('NOTICE', NoticeImg, body, time);
+export function notifyNotice(body) {
+  notify('NOTICE', NoticeImg, body);
 }
 
-export function notifySuccess(body, time) {
-  notify('SUCCESS', SuccessImg, body, time);
+export function notifySuccess(body) {
+  notify('SUCCESS', SuccessImg, body);
 }
 
-export function notifyError(body, time) {
-  notify('ERROR', ErrorImg, body, time);
+export function notifyError(body) {
+  notify('ERROR', ErrorImg, body);
 }
 
-function notify(title, icon, body, time) {
-  const milliseconds = getDuration(time);
-  const n = new Notification(title, { icon: icon, body: body });
-  setTimeout(n.close.bind(n), milliseconds);
+function notify(title, icon, body) {
+  chrome.notifications.create({
+    type: 'basic',
+    iconUrl: icon,
+    title: title,
+    message: body,
+  });
 }
 
 function getDuration(time) {

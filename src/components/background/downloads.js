@@ -14,6 +14,7 @@ const down_dict = {};
 export default async function handleOnCreated(dl_item) {
   console.log(dl_item);
   await chrome.downloads.pause(dl_item.id);
+  console.log('pause download: success');
 
   const query = {
     url: dl_item.url,
@@ -41,7 +42,7 @@ export default async function handleOnCreated(dl_item) {
     if (found_dl_item.state === 'in_progress') {
       await chrome.downloads.cancel(dl_item.id);
       console.log('cancel download: success');
-      break;
+      return;
 
     } else if (found_dl_item.state === 'complete') {
       console.log(found_dl_item);
@@ -51,23 +52,25 @@ export default async function handleOnCreated(dl_item) {
         title: 'File already exists',
         message: 'It seems like the file ' + dl_item.filename + ' already exists',
         contextMessage: 'Click to show the file',
-        isClickable: true,
         buttons: [
-          {title: 'Resume', iconUrl: SuccessImg},
-          {title: 'Cancel', iconUrl: ErrorImg}
+          {title: 'Download Anyway', iconUrl: SuccessImg},
+          {title: 'Cancel Download', iconUrl: ErrorImg}
         ]
       }, function (notification_id) {
         down_dict[notification_id] = dl_item.id;
         console.log(`Notification id: ${notification_id}`);
       });
-      break;
+      return;
     }
   }
 
+  await chrome.downloads.resume(dl_item.id);
+  console.log('resume download: success');
 }
 
 chrome.notifications.onButtonClicked.addListener(async (noti_id, button_index) => {
 
+  console.log(down_dict);
   console.log(noti_id);
   console.log('button clicked');
   const id = down_dict[noti_id];
@@ -91,13 +94,15 @@ chrome.notifications.onButtonClicked.addListener(async (noti_id, button_index) =
   chrome.notifications.clear(noti_id);
 });
 
-// chrome.notifications.onClicked.addListener(function (notificationId) {
-//   if (itemsByNotificationId[notificationId]) {
-//     chrome.notifications.clear(notificationId);
-//     chrome.downloads.cancel(itemsByNotificationId[notificationId].downloadItem.id);
-//     chrome.downloads.erase({id: itemsByNotificationId[notificationId].downloadItem.id});
-//     chrome.downloads.show(itemsByNotificationId[notificationId].foundItem.id);
-//     delete itemsByExistingId[itemsByNotificationId[notificationId].foundItem.id];
-//     delete itemsByNotificationId[notificationId];
-//   }
-// });
+chrome.notifications.onClicked.addListener(function (noti_id) {
+  console.log('Notification clicked. Cancel download by default');
+  const id = down_dict[noti_id];
+  if (!id) {
+    console.log('dl-item not there?');
+    return;
+  }
+  delete down_dict[noti_id];
+
+  chrome.notifications.clear(noti_id);
+  chrome.downloads.cancel(id);
+});

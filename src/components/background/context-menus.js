@@ -1,3 +1,6 @@
+require('chrome-extension-async');
+require('chrome-extension-async/execute-async-function');
+import { notifyNotice } from '../../common/notifications';
 
 export function createContextMenus() {
   chrome.contextMenus.create({

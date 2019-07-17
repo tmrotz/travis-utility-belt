@@ -6,9 +6,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  resolve: {
-    modules: ['node_modules']
-  },
   entry: {
     background: path.resolve(__dirname, 'src/components/background/index.js'),
     content: path.resolve(__dirname, 'src/components/content/index.js'),
