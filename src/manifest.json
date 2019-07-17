@@ -39,8 +39,6 @@
   ],
 
   "permissions": [
-    "webRequest",
-    "webRequestBlocking",
     "contextMenus",
     "downloads",
     "notifications",
