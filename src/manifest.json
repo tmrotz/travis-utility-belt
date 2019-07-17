@@ -39,10 +39,11 @@
   ],
 
   "permissions": [
+    "activeTab",
     "contextMenus",
     "downloads",
     "notifications",
     "storage",
-    "<all_urls>"
+    "https://www.reddit.com/"
   ]
 }
