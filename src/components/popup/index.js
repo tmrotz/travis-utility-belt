@@ -13,6 +13,6 @@ $('#paste-text-button').click(event => {
 
   chrome.storage.local.set({ 'paste-text': paste_text }, () => {
     $('#paste-text-input').placeholder = paste_text;
-    notifySuccess('Paste text successfully updated!', {seconds: 5});
+    notifySuccess('Paste text successfully updated!');
   });
 });

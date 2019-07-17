@@ -21,7 +21,7 @@ export function createContextMenus() {
  */
 export async function handleContextMenus(info, tab) {
   if (tab.url.startsWith('chrome://')) {
-    notifyNotice('Paste text doesn\'t work on chrome://', {seconds: 5});
+    notifyNotice('Paste text doesn\'t work on chrome://');
     return;
   }
 
