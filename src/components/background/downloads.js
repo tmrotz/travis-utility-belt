@@ -3,8 +3,10 @@
  * @param [DownloadItem]{@link https://developers.chrome.com/extensions/downloads#type-DownloadItem}
  *   dl_item - A DownloadItem object
  */
-export default async function downloads(dl_item) {
-  chrome.downloads.pause(dl_item.id);
+// export default async function handleDeterminingFilename(dl_item, suggest) {
+export default async function handleOnCreated(dl_item) {
+  console.log(dl_item);
+  await chrome.downloads.pause(dl_item.id);
 
   const query = {
     url: dl_item.url,
